@@ -1,0 +1,44 @@
+{
+    "name": "Installed shadcn Primitives Manifest",
+    "registry": "@shadcn",
+    "style": "default",
+    "source": "@/components/ui",
+    "iconLibrary": "lucide",
+    "installed": [
+        "button",
+        "card",
+        "input",
+        "label"
+    ],
+    "dependencies": {
+        "clsx": "^2.1.1",
+        "tailwind-merge": "^3.0.0",
+        "lucide-react": "^0.400.0"
+    },
+    "instructions": {
+        "beforeWritingUi": [
+            "Check this manifest before creating UI primitives.",
+            "Reuse installed shadcn/ui primitives from @/components/ui or equivalent alias.",
+            "Do not recreate standard primitives with raw HTML and ad-hoc Tailwind styling.",
+            "If a needed primitive is missing, install it with `npx shadcn@latest add <component-name> --yes` instead of writing a custom replacement."
+        ],
+        "forbiddenRecreationTargets": [
+            "button",
+            "input",
+            "card",
+            "dialog",
+            "select",
+            "tabs",
+            "badge",
+            "dropdown-menu",
+            "checkbox",
+            "textarea",
+            "alert",
+            "separator"
+        ],
+        "validation": [
+            "Run `npm run theme:audit` after UI changes.",
+            "Run `npm run build` before completion."
+        ]
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "shadcn-cline-kit",
+    "version": "1.0.0",
+    "description": "Portable shadcn/ui + Cline rules installer for Next.js and React projects.",
+    "main": "setup.js",
+    "bin": {
+        "shadcn-cline-kit": "./setup.js"
+    },
+    "files": [
+        "setup.js",
+        "README.md",
+        "kit",
+        "global-rule"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Isuruzenith/shadcn-cline-kit.git"
+    },
+    "keywords": [
+        "shadcn",
+        "cline",
+        "nextjs",
+        "react",
+        "tailwind",
+        "ui-rules",
+        "theme-tokens"
+    ],
+    "license": "MIT"
+}
