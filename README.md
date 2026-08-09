@@ -1,70 +1,72 @@
 # 🚀 Portable shadcn/ui + Cline Setup Kit
 
-මෙම Kit එක මගින් ඕනෑම Next.js / React project එකක `shadcn/ui` theme tokens නිවැරදිව භාවිතා කරමින්, hardcoded Tailwind styling නොයොදා, AI Agents (Cline, Cursor, Claude Code) හරහා 90-95% consistent UI සෑදීමට අවශ්‍ය Rules, Workflows, සහ Validation Scripts ස්වයංක්‍රීයව ස්ථාපනය කරගත හැක.
+This kit allows you to automatically set up Rules, Workflows, and Validation Scripts needed to build 90-95% consistent UIs using AI Agents (Cline, Cursor, Claude Code) in any Next.js / React project by correctly using `shadcn/ui` theme tokens and avoiding hardcoded Tailwind styling.
 
 ---
 
 ## ⚡ 1-Command Setup (Recommended)
 
-ඔබගේ ඕනෑම target project එකක root directory එකෙහි සිට terminal එක තුල පහත command එක execute කරන්න:
+Execute the following command inside the root directory of your target project:
 
 ```bash
 npx github:Isuruzenith/shadcn-cline-kit
 ```
 
-> මෙම command එක run කළ යුත්තේ setup කිරීමට අවශ්‍ය project එකේ root directory එක තුළයි.
+> **Note:** Always run this command from the root directory of the project you want to configure.
 
 ---
 
-## 📦 Kit එකෙහි අඩංගු දෑ (Kit Contents)
+## 📦 Kit Contents
 
 ```txt
 shadcn-cline-kit/
-├── package.json                    # NPM/NPX CLI config සහ bin definition
-├── setup.js                        # ස්වයංක්‍රීය ස්ථාපන script එක
-├── README.md                       # මෙම භාවිත උපදෙස් සටහන
-├── .gitignore                      # Kit repository ignore rules
+├── package.json                    # NPM/NPX CLI configuration and bin mapping
+├── setup.js                        # Automated installer script
+├── README.md                       # Setup and usage guide (this file)
+├── .gitignore                      # Git ignore rules for the kit repository
 ├── kit/
 │   ├── .clinerules/
-│   │   ├── CONTEXT_MAP.md          # Compact source map
-│   │   ├── shadcn-ui.md            # Main shadcn theme/component rules
+│   │   ├── CONTEXT_MAP.md          # Compact workspace source map
+│   │   ├── shadcn-ui.md            # Core theme and component validation rules
 │   │   └── workflows/
-│   │       ├── create-ui.md        # UI create/edit workflow
-│   │       ├── add-shadcn-block.md # Official shadcn block workflow
-│   │       └── audit-ui.md         # Theme compliance audit workflow
+│   │       ├── create-ui.md        # UI creation and editing workflow
+│   │       ├── add-shadcn-block.md # Official shadcn block auto-add workflow
+│   │       └── audit-ui.md         # Theme compliance auditing workflow
 │   ├── scripts/
-│   │   └── audit-theme-tokens.js   # Hardcoded colors/styles පරික්ෂා කරන script එක
+│   │   └── audit-theme-tokens.js   # Script checking for hardcoded colors and styles
 │   ├── components/
 │   │   └── ui/
-│   │       └── manifest.json       # Installed UI primitives manifest එක
+│   │       └── manifest.json       # Installed UI primitives manifest file
 │   └── .vscode/
-│       └── settings.json           # VS Code format සහ Tailwind regex settings
+│       └── settings.json           # VS Code formatting & Tailwind regex rules
 └── global-rule/
-    └── shadcn-ui-global.md         # Global Cline Rule template එක
+    └── shadcn-ui-global.md         # Template for global Cline configuration
 ```
 
 ---
 
-## 🛠️ Setup ක්‍රම
+## 🛠️ Alternative Installation Methods
 
-### ක්‍රමය 1: Single Command via GitHub NPX
+### Method 1: Single Command via GitHub NPX
 
-Target project root directory එක තුළ සිට:
+From your target project's root directory:
 
 ```bash
 npx github:Isuruzenith/shadcn-cline-kit
 ```
 
-### ක්‍රමය 2: Kit Folder එක Copy/Clone කර Setup කිරීම
+### Method 2: Copying/Cloning the Kit Folder
 
-1. `shadcn-cline-kit` folder එක target project root එකට copy/clone කරන්න.
-2. Target project terminal එක තුළ run කරන්න:
+1. Copy or clone the `shadcn-cline-kit` directory into your target project's root folder.
+2. From the project root, run:
 
 ```bash
 node shadcn-cline-kit/setup.js
 ```
 
-### ක්‍රමය 3: වෙනත් Path එකක සිට Run කිරීම
+### Method 3: Running Externally from Another Directory
+
+Provide the absolute path to `setup.js` and execute:
 
 ```bash
 node C:/Projects/AEGIS/shadcn-cline-kit/setup.js
@@ -72,14 +74,14 @@ node C:/Projects/AEGIS/shadcn-cline-kit/setup.js
 
 ---
 
-## ✅ setup.js මගින් ස්වයංක්‍රීයව සිදුවන දෑ
+## ✅ What setup.js Automates
 
-- Target project එකට `.clinerules/` directory එක copy කරයි.
-- `CONTEXT_MAP.md`, `shadcn-ui.md`, සහ workflows install කරයි.
-- `scripts/audit-theme-tokens.js` copy කරයි.
-- `components/ui/manifest.json` නැත්නම් create/copy කරයි.
-- `.vscode/settings.json` safely merge කරයි.
-- `package.json` තුළ පහත script එක නැත්නම් add කරයි:
+- Copies the `.clinerules/` directory to the target project.
+- Installs `CONTEXT_MAP.md`, `shadcn-ui.md`, and default workflows.
+- Copies the `scripts/audit-theme-tokens.js` utility.
+- Creates or copies `components/ui/manifest.json` if missing.
+- Merges formatting and Tailwind regex configurations safely into `.vscode/settings.json`.
+- Appends the following validation script to `package.json`:
 
 ```json
 {
@@ -93,7 +95,7 @@ node C:/Projects/AEGIS/shadcn-cline-kit/setup.js
 
 ## 🧪 Verification & Post-Install Steps
 
-ස්ථාපනයෙන් පසු setup එක සාර්ථකදැයි verify කිරීමට:
+To confirm that the kit was successfully installed and everything is working properly:
 
 ```bash
 npm run theme:audit
@@ -104,13 +106,13 @@ npm run build
 
 ## 🚀 GitHub Repository Usage
 
-මෙම kit එක GitHub repository එකක් ලෙස publish කළ පසු ඕනෑම project එකකින් single command එකකින් භාවිත කළ හැක:
+Since this repository is public, it can be executed instantly in any project via:
 
 ```bash
 npx github:Isuruzenith/shadcn-cline-kit
 ```
 
-GitHub repository URL:
+Repository Link:
 
 ```txt
 https://github.com/Isuruzenith/shadcn-cline-kit
@@ -118,11 +120,11 @@ https://github.com/Isuruzenith/shadcn-cline-kit
 
 ---
 
-## 💡 AI Agent (Cline) වැඩ කරන ආකාරය
+## 💡 How the AI Agent (Cline) Works Post-Setup
 
-Setup කිරීමෙන් පසු Cline පහත රීති අනුව ක්‍රියාත්මක වේ:
+After setting up the kit, the AI Agent follows these strict compliance rules:
 
-1. **Source of Truth Check:** UI එකක් සෑදීමට පෙර `.clinerules/CONTEXT_MAP.md`, `components.json`, global CSS, සහ `lib/utils.ts` කියවයි.
-2. **No Hardcoded Tailwind:** `bg-white`, `bg-black`, `bg-gray-*`, `text-gray-*`, `bg-blue-600` වැනි classes වෙනුවට `bg-background`, `text-foreground`, `bg-card`, `bg-primary`, `border-border` වැනි semantic theme tokens පමණක් භාවිතා කරයි.
-3. **No Component Recreation:** standard `<button>`, `<input>`, හෝ custom card boxes වෙනුවට `@/components/ui/*` primitives reuse කරයි. Primitive එකක් නැත්නම් `npx shadcn@latest add <component-name> --yes` මගින් add කරගනී.
-4. **Validation Gate:** UI එක සෑදූ පසු `npm run theme:audit` සහ `npm run build` run කර verification සිදු කරයි.
+1. **Source of Truth Check:** Reads `.clinerules/CONTEXT_MAP.md`, `components.json`, global CSS, and `lib/utils.ts` before creating or editing any UI components.
+2. **No Hardcoded Tailwind:** Strictly uses semantic theme tokens (e.g., `bg-background`, `text-foreground`, `bg-card`, `bg-primary`, `border-border`) instead of hardcoded colors like `bg-white`, `bg-black`, `bg-gray-*`, `text-gray-*`, or `bg-blue-600`.
+3. **No Primitive Recreation:** Reuses existing `@/components/ui/*` primitives instead of using raw standard markup. If a primitive is missing, it installs it via `npx shadcn@latest add <component-name> --yes`.
+4. **Validation Gate:** Automatically runs `npm run theme:audit` and `npm run build` after generating code to ensure full design system compliance.
